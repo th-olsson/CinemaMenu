@@ -16,6 +16,7 @@
                 Console.WriteLine(" 0)      Avsluta program");
                 Console.WriteLine(" 1)      Se ditt biljettpris");
                 Console.WriteLine(" 2)      Se biljettpris för en grupp");
+                Console.WriteLine(" 3)      Upprepa din text 10 gånger");
                 Console.WriteLine();
 
                 Console.Write("Välj alternativ: ");
@@ -73,7 +74,7 @@
                                     Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
                                     Console.ReadKey();
                                 }
-                            } while (!validAge);
+                            } while (!validAge); // Repeat prompt until valid age
                             Console.Clear();
                             Console.WriteLine("Ange din ålder:");
 
@@ -100,7 +101,7 @@
                                     }
                                     else
                                     {
-                                        // Valid group size > calculate total price
+                                        // Valid group size -> calculate total price
                                         validGroupSize = true;
                                         int totalPrice = 0;
                                         for (int i = 1; i <= groupSize; i++)
@@ -119,7 +120,7 @@
                                                     }
                                                     else
                                                     {
-                                                        // Valid age > add to total price
+                                                        // Valid age -> add to total price
                                                         validAge = true;
                                                         if (age < 20)
                                                         {
@@ -142,7 +143,7 @@
                                                     Console.WriteLine("Ogiltig inmatning. Vänligen ange en giltig ålder.");
                                                     Console.WriteLine();
                                                 }
-                                            } while (!validAge);
+                                            } while (!validAge); // Repeat prompt until valid age
                                         }
                                         // Total price for the group
                                         Console.WriteLine($"Totalpris för gruppen: {totalPrice}kr\n");
@@ -158,10 +159,42 @@
                                     Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
                                     Console.ReadKey();
                                 }
-                            } while (!validGroupSize);
+                            } while (!validGroupSize); // Repeat prompt until valid group size
                             break;
                         }
+                    case "3":
+                        {
+                            // Repeat user text input 10 times
+                            string userText = "";
+                            do
+                            {
+                                Console.Clear();
+                                Console.Write("Ange en text att upprepa 10 gånger: ");
+                                userText = Console.ReadLine();
 
+                                if (string.IsNullOrEmpty(userText))
+                                {
+                                    // Invalid input
+                                    Console.WriteLine();
+                                    Console.WriteLine("Ogiltig inmatning. Vänligen ange en giltig text.");
+                                    Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
+                                    Console.ReadKey();
+                                }
+                                else
+                                {
+                                    // Valid input -> repeat to user 10 times
+                                    Console.WriteLine();
+                                    for (int i = 0; i < 10; i++)
+                                    {
+                                        Console.WriteLine($"{i + 1}. {userText}");
+                                    }
+                                    Console.WriteLine();
+                                    Console.WriteLine("Tryck på valfri tangent för att återgå till huvudmenyn...");
+                                    Console.ReadKey();
+                                }
+                            } while (string.IsNullOrEmpty(userText)); // Repeat prompt until valid input
+                            break;
+                        }
                     default:
                         Console.WriteLine();
                         Console.WriteLine("Ogiltig inmatning.");
