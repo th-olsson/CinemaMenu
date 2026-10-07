@@ -52,7 +52,11 @@
                                     {
                                         // Valid age
                                         validAge = true;
-                                        if (age < 20)
+                                        if (age < 5 || age > 100)
+                                        {
+                                            Console.WriteLine("Gratis inträde");
+                                        }
+                                        else if (age < 20)
                                         {
                                             Console.WriteLine("Ungdomspris: 80kr");
                                         }
@@ -123,7 +127,11 @@
                                                     {
                                                         // Valid age -> add to total price
                                                         validAge = true;
-                                                        if (age < 20)
+                                                        if (age < 5 || age > 100)
+                                                        {
+                                                            totalPrice += 0;
+                                                        }
+                                                        else if (age < 20)
                                                         {
                                                             totalPrice += 80;
                                                         }
@@ -196,7 +204,7 @@
                             } while (string.IsNullOrEmpty(userText)); // Repeat prompt until valid input
                             break;
                         }
-                        case "4":
+                    case "4":
                         {
                             // Get third word from user input
                             string userInput = "";
