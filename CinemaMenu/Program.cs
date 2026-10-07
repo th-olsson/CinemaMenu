@@ -17,6 +17,7 @@
                 Console.WriteLine(" 1)      Se ditt biljettpris");
                 Console.WriteLine(" 2)      Se biljettpris för en grupp");
                 Console.WriteLine(" 3)      Upprepa din text 10 gånger");
+                Console.WriteLine(" 4)      Det tredje ordet");
                 Console.WriteLine();
 
                 Console.Write("Välj alternativ: ");
@@ -193,6 +194,48 @@
                                     Console.ReadKey();
                                 }
                             } while (string.IsNullOrEmpty(userText)); // Repeat prompt until valid input
+                            break;
+                        }
+                        case "4":
+                        {
+                            // Get third word from user input
+                            string userInput = "";
+                            do
+                            {
+                                Console.Clear();
+                                Console.Write("Ange en text med minst tre ord: ");
+                                userInput = Console.ReadLine();
+                                if (string.IsNullOrEmpty(userInput))
+                                {
+                                    // Invalid input
+                                    Console.WriteLine();
+                                    Console.WriteLine("Ogiltig inmatning. Vänligen ange en giltig text.");
+                                    Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
+                                    Console.ReadKey();
+                                }
+                                else
+                                {
+                                    // Valid input -> split to words and get the third word
+                                    var words = userInput.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                                    if (words.Length < 3)
+                                    {
+                                        // Not enough words
+                                        Console.WriteLine();
+                                        Console.WriteLine("Ogiltig inmatning. Vänligen ange minst tre ord.");
+                                        Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
+                                        Console.ReadKey();
+                                    }
+                                    else
+                                    {
+                                        // Valid input -> display the third word
+                                        Console.WriteLine();
+                                        Console.WriteLine($"Det tredje ordet är: {words[2]}");
+                                        Console.WriteLine();
+                                        Console.WriteLine("Tryck på valfri tangent för att återgå till huvudmenyn...");
+                                        Console.ReadKey();
+                                    }
+                                }
+                            } while (string.IsNullOrEmpty(userInput) || userInput.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length < 3); // Repeat prompt until valid input with at least three words
                             break;
                         }
                     default:
